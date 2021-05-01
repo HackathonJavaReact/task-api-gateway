@@ -5,6 +5,6 @@ zuul:
     routes:
         authentication:
             path: /api/authenticationService/**
-            url: https://api-gateway-hackathon.herokuapp.com
+            url: https://authentication-api-hackathon.herokuapp.com/
     ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
             
