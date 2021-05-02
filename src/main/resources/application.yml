@@ -9,5 +9,9 @@ zuul:
         tasks:
             path: /api/taskService/**
             url: https://task-api-hackathon.herokuapp.com/api
+        api-composition:
+            path: /api/compose/**
+            url: https://composition-api-hackathon.herokuapp.com
     ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+    sensitive-headers: Cookie,Set-Cookie
             
