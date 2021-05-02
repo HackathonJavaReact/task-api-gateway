@@ -5,6 +5,9 @@ zuul:
     routes:
         authentication:
             path: /api/authenticationService/**
-            url: https://authentication-api-hackathon.herokuapp.com/
+            url: https://authentication-api-hackathon.herokuapp.com
+        tasks:
+            path: /api/taskService/**
+            url: https://task-api-hackathon.herokuapp.com/api/tasks
     ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
             
