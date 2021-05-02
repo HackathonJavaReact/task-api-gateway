@@ -28,6 +28,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
             .antMatchers(HttpMethod.GET, "/api/taskService/tasks").permitAll()
             .antMatchers(HttpMethod.POST, "/api/taskService/tasks").permitAll()
             .antMatchers(HttpMethod.GET, "/api/taskService/tasks/*").permitAll()
+            .antMatchers(HttpMethod.GET, "/api/taskService/tasks/ofuser/*").permitAll()
             .antMatchers("/**").denyAll()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .and()
