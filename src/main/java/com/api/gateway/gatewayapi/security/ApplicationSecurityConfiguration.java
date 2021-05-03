@@ -25,6 +25,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
             .csrf().disable()
             .authorizeRequests()
             .antMatchers(HttpMethod.POST, "/api/authenticationService/*").permitAll()
+            .antMatchers(HttpMethod.GET, "/api/authenticationService/*").permitAll()
             .antMatchers(HttpMethod.GET, "/api/taskService/tasks").permitAll()
             .antMatchers(HttpMethod.POST, "/api/taskService/tasks").denyAll()
             .antMatchers(HttpMethod.GET, "/api/taskService/tasks/*").permitAll()
