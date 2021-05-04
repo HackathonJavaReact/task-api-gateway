@@ -1,5 +1,7 @@
 package com.api.gateway.gatewayapi.security;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.api.gateway.gatewayapi.filter.security.AuthenticationFilter;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,15 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .and()
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+                .logout()
+                    .logoutUrl("/logout")
+                            .deleteCookies("sessionId")
+                                .invalidateHttpSession(true)
+                                .logoutSuccessHandler((request, response, authentication) -> {
+                                    response.setStatus(HttpServletResponse.SC_OK);
+                                });
 
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

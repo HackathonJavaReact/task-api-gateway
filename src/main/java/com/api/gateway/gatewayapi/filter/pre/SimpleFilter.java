@@ -1,5 +1,6 @@
 package com.api.gateway.gatewayapi.filter.pre;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import com.netflix.zuul.ZuulFilter;
@@ -27,6 +28,13 @@ public class SimpleFilter extends ZuulFilter {
     public Object run() throws ZuulException {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                System.err.println(cookie.getName() + " => " +cookie.getValue());
+            }
+        }
 
         log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
